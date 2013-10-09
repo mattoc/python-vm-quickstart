@@ -28,6 +28,8 @@ Edit the ``Vagrantfile`` and replace the paths as necessary for the
 Update the Ansible ``playbook.yml`` and set the ``project_alias`` to
 match your own project's root directory name.
 
+If your project uses a custom requirements path (such as Mezzanine's ``$project/$app/requirements/project.txt`` layout) then update the ``requirements`` var in ``playbook.yml`` accordingly.
+
 ::
 
   $ vagrant up

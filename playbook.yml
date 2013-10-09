@@ -11,6 +11,7 @@
     venv_root: ~/{{ venv_dir }}
     workon: WORKON_HOME={{ venv_root }}
     project_venv: /home/$USER/{{ venv_dir }}/{{ project_alias }}
+    requirements: "{{ site_root }}/requirements.txt"
   user: vagrant  # default "vagrant"
   tasks:
     - name: Update apt cache
@@ -67,7 +68,7 @@
       shell: executable=/bin/bash virtualenv {{ project_venv }}
 
     - name: Install project packages
-      shell: executable=/bin/bash source {{ project_venv}}/bin/activate && pip install -r {{ site_root }}/requirements.txt
+      shell: executable=/bin/bash source {{ project_venv}}/bin/activate && pip install -r {{ requirements }}
 
     - name: Saves virtualenvwrapper path
       shell: echo "\nexport {{ workon }}" >> ~/.bashrc
