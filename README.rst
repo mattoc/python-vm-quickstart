@@ -50,6 +50,17 @@ For a Django project:
 Visit http://localhost:54321 on the host and you should see the app
 served by the Django development server running on the VM.
 
+Problems?
+---------
+If you experience an "SSLError: The read operation timed out" timeout
+when running the playbook (such as when installing packages via pip)
+run the following on the host to re-run the bootstrap script::
+
+  $ ansible-playbook -i ansible_hosts playbook.yml
+
+You may need to run the same command with the ``-T`` or ``-timeout``
+flag with a higher timeout in seconds.
+
 Prerequisites
 -------------
 
