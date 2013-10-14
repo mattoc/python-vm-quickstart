@@ -46,6 +46,10 @@
       sudo: yes
       apt: pkg=python-software-properties state=present
 
+    - name: Install JPEG libraries for PIL
+      sudo: yes
+      apt: pkg=libjpeg-dev state=present
+
     - name: Install PostgreSQL (1/3)
       sudo: yes
       apt: pkg=libpq-dev state=present
