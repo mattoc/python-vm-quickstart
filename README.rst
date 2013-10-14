@@ -13,6 +13,9 @@ Sets up some reasonable default choices assuming you want to be able to
 access the project repository via the filesystem and access a dev server
 running on the VM via the browser on the host.
 
+Creates a default database for PostgreSQL for ``{{ vagrant_user }}`` var
+value. DB name, role (username) and password all match likewise.
+
 Usage
 -----
 

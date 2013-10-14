@@ -78,6 +78,21 @@
     - name: Install project packages
       shell: executable=/bin/bash source {{ project_venv}}/bin/activate && pip install -r {{ requirements }}
 
+    - name: Configures PostgreSQL to allow system users to connect
+      shell: sudo -u postgres sed -i.bak 's/local.*all.*all.*peer/local    all            all                                     ident/g' /etc/postgresql/9.1/main/pg_hba.conf
+
+    - name: Reload PostgreSQL config after auth change
+      shell: sudo service postgresql reload
+
+    - name: Create a PostgreSQL role for system user
+      shell: sudo -u postgres createuser -s {{ vagrant_user }}
+
+    - name: Create a db for system user
+      shell: createdb
+
+    - name: Set password for new role
+      shell: psql -c "alter role {{ vagrant_user }} with password '{{ vagrant_user }}';"
+
     - name: Saves virtualenvwrapper path
       shell: echo "\nexport {{ workon }}" >> ~/.bashrc
 
