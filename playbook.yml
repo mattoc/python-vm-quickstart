@@ -22,6 +22,10 @@
       sudo: yes
       apt: pkg=git-core state=present
 
+    - name: Install screen
+      sudo: yes
+      apt: pkg=screen state=present
+
     - name: Install vim for one-off edits (or swap in your own :))
       sudo: yes
       apt: pkg=vim state=present
