@@ -22,6 +22,10 @@
       sudo: yes
       apt: pkg=git-core state=present
 
+    - name: Install mercurial
+      sudo: yes
+      apt: pkg=mercurial state=present
+
     - name: Install screen
       sudo: yes
       apt: pkg=screen state=present
