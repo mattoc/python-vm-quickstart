@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+project = "myproject"
+
 Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
@@ -31,7 +33,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "/Users/<user>/django/myproject", "/home/vagrant/myproject"
+  config.vm.synced_folder "#{ENV['HOME']}/django/#{project}", "/home/vagrant/#{project}"
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "playbook.yml"
